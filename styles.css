@@ -1,0 +1,478 @@
+/* ============================================
+   Kumagaya Kids English - Stylesheet
+   Bright, Child-Friendly Design System
+   ============================================ */
+
+/* ============================================
+   CSS Variables & Color Palette
+   ============================================ */
+:root {
+    --primary-color: #4ECDC4;        /* Playful Teal - main brand color */
+    --secondary-color: #FF6B6B;      /* Friendly Coral - accent color */
+    --tertiary-color: #FFD166;       /* Sunny Yellow - highlight color */
+    --neutral-color: #F7F9FC;        /* Clean Light Gray */
+    --text-color: #2D3748;           /* Dark Blue-Gray for readability */
+    --background-color: #FFFFFF;     /* Pure White */
+    --footer-bg: #2D3748;            /* Dark Blue for footer */
+    --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 6px 12px rgba(0, 0, 0, 0.15);
+    --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.2);
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+}
+
+/* ============================================
+   Google Fonts Import
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Comic+Neue:wght@400;700&family=Quicksand:wght@400;600;700&family=Open+Sans:wght@400;600;700&family=Lato:wght@400;700&display=swap');
+
+/* ============================================
+   Reset & Base Styles
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', 'Lato', sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* ============================================
+   Typography
+   ============================================ */
+h1, h2 {
+    font-family: 'Nunito', 'Comic Neue', 'Quicksand', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-family: 'Nunito', 'Comic Neue', 'Quicksand', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-color);
+}
+
+p, li {
+    font-family: 'Open Sans', 'Lato', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+/* ============================================
+   Header Styles
+   ============================================ */
+header {
+    background-color: var(--background-color);
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow-soft);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 4px solid;
+    border-image: linear-gradient(90deg, 
+        var(--primary-color) 0%, 
+        var(--secondary-color) 50%, 
+        var(--tertiary-color) 100%) 1;
+}
+
+.logo-container h1 {
+    font-size: 2rem;
+    margin: 0;
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+}
+
+.logo-container h1::before {
+    content: '📚';
+    margin-right: 0.5rem;
+    font-size: 2rem;
+    display: inline-block;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ============================================
+   Navigation Styles
+   ============================================ */
+nav {
+    margin-top: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: var(--transition);
+    position: relative;
+}
+
+nav a:hover {
+    color: var(--secondary-color);
+    background-color: var(--neutral-color);
+    transform: translateY(-2px);
+}
+
+nav a.active {
+    color: var(--secondary-color);
+    background-color: var(--neutral-color);
+    font-weight: 700;
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+/* ============================================
+   Main Content Styles
+   ============================================ */
+main {
+    min-height: calc(100vh - 300px);
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, var(--neutral-color) 0%, rgba(78, 205, 196, 0.1) 100%);
+    border-radius: var(--border-radius);
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--text-color);
+}
+
+.page-header {
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
+
+.page-header h2 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.intro {
+    padding: 2rem;
+    background-color: var(--neutral-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+}
+
+article {
+    background-color: var(--background-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    border-left: 4px solid var(--primary-color);
+    transition: var(--transition);
+}
+
+article:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+    border-left-color: var(--secondary-color);
+}
+
+/* ============================================
+   Button Styles
+   ============================================ */
+.btn-primary {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--background-color);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: center;
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-primary:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+/* ============================================
+   Footer Styles
+   ============================================ */
+footer {
+    background-color: var(--footer-bg);
+    color: var(--neutral-color);
+    padding: 2.5rem 2rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-address p {
+    color: var(--neutral-color);
+    margin-bottom: 0.5rem;
+}
+
+.footer-address strong {
+    color: var(--background-color);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.footer-social p {
+    color: var(--neutral-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons a {
+    display: inline-block;
+    font-size: 2rem;
+    text-decoration: none;
+    transition: var(--transition);
+    transform: scale(1);
+}
+
+.social-icons a:hover {
+    transform: scale(1.2) rotate(10deg);
+    filter: brightness(1.2);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(247, 249, 252, 0.2);
+    color: var(--neutral-color);
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    .logo-container h1 {
+        font-size: 1.5rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+
+    nav a {
+        display: block;
+        width: 100%;
+        padding: 0.75rem;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    .hero {
+        padding: 2rem 1rem;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-container h1 {
+        font-size: 1.25rem;
+    }
+
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+
+    .page-header h2 {
+        font-size: 1.75rem;
+    }
+}
+
+/* ============================================
+   Additional Child-Friendly Elements
+   ============================================ */
+/* Soft rounded corners for images and containers */
+img {
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+}
+
+/* Playful icon animations */
+.icon-bounce {
+    display: inline-block;
+    animation: bounce 2s infinite;
+}
+
+/* Gradient text effects */
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Card hover effects */
+.card {
+    background-color: var(--background-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
