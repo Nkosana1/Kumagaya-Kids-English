@@ -35,18 +35,81 @@
     <main>
         <section class="page-header">
             <h2>Contact Us</h2>
+            <p>We'd love to hear from you! Get in touch to learn more or schedule a trial lesson.</p>
         </section>
 
-        <section class="content">
-            <article>
-                <h3>Get in Touch</h3>
-                <p>We'd love to hear from you! Contact us to learn more about our programs or to schedule a visit to our school.</p>
-            </article>
+        <section class="contact-content">
+            <div class="content">
+                <article class="contact-info">
+                    <h3>Visit Our School</h3>
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop" alt="Kumagaya Kids English school entrance and welcoming facility">
+                    <div class="contact-details">
+                        <p><strong>Address:</strong><br>
+                        123 Learning Street<br>
+                        Kumagaya, Saitama 360-0000<br>
+                        Japan</p>
+                        <p><strong>Phone:</strong><br>
+                        <a href="tel:+81481234567">+81 48-123-4567</a></p>
+                        <p><strong>Email:</strong><br>
+                        <a href="mailto:info@kumagayakidsenglish.jp">info@kumagayakidsenglish.jp</a></p>
+                        <p><strong>Office Hours:</strong><br>
+                        Monday - Friday: 9:00 AM - 6:00 PM<br>
+                        Saturday: 9:00 AM - 4:00 PM<br>
+                        Sunday: Closed</p>
+                    </div>
+                </article>
 
-            <article>
-                <h3>Visit Us</h3>
-                <p>Come visit us at our location in Kumagaya. We're here to answer any questions you may have about our English programs for children.</p>
-            </article>
+                <article class="contact-form-section">
+                    <h3>Schedule a Trial Lesson</h3>
+                    <p>Fill out the form below and we'll get back to you within 24 hours to schedule your child's free trial lesson!</p>
+                    <form class="contact-form" action="#" method="post">
+                        <div class="form-group">
+                            <label for="parent-name">Parent/Guardian Name *</label>
+                            <input type="text" id="parent-name" name="parent-name" required minlength="2">
+                        </div>
+                        <div class="form-group">
+                            <label for="child-name">Child's Name *</label>
+                            <input type="text" id="child-name" name="child-name" required minlength="2">
+                        </div>
+                        <div class="form-group">
+                            <label for="child-age">Child's Age *</label>
+                            <input type="number" id="child-age" name="child-age" required min="2" max="12">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">Program of Interest</label>
+                            <select id="interest" name="interest">
+                                <option value="">Select a program...</option>
+                                <option value="toddlers">Toddlers (Ages 2-3)</option>
+                                <option value="preschool">Preschool (Ages 4-5)</option>
+                                <option value="lower-elementary">Lower Elementary (Ages 6-8)</option>
+                                <option value="upper-elementary">Upper Elementary (Ages 9-12)</option>
+                                <option value="not-sure">Not sure yet</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message (Optional)</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your child or ask any questions..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Send Inquiry</button>
+                    </form>
+                </article>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <h2 class="section-title">Find Us</h2>
+            <div class="map-placeholder">
+                <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200&h=400&fit=crop" alt="Map showing location of Kumagaya Kids English in Kumagaya, Saitama">
+                <p>Located in the heart of Kumagaya, easily accessible by public transportation and with parking available for parents.</p>
+            </div>
         </section>
     </main>
 

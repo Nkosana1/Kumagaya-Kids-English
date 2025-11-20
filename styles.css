@@ -668,22 +668,387 @@ img {
     background-clip: text;
 }
 
-/* Additional utility classes for multi-column layouts */
+/* ============================================
+   Hero Section with Image
+   ============================================ */
+.hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-content {
+    width: 100%;
+}
+
+.hero-content .btn-primary {
+    margin-top: 1rem;
+}
+
+/* ============================================
+   Features Section
+   ============================================ */
+.features {
+    margin: 3rem 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+}
+
+.feature-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.feature-card h3 {
+    padding: 1rem 1.5rem 0.5rem;
+    color: var(--primary-color);
+}
+
+.feature-card p {
+    padding: 0 1.5rem 1.5rem;
+    margin: 0;
+}
+
+/* ============================================
+   Program Cards
+   ============================================ */
 .program-listing {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
+    margin: 2rem 0;
 }
 
+.program-card,
+.age-group-card {
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+}
+
+.program-card:hover,
+.age-group-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.program-card img,
+.age-group-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.program-card h3,
+.age-group-card h3 {
+    padding: 1.5rem 1.5rem 0.5rem;
+    color: var(--primary-color);
+}
+
+.program-card p,
+.age-group-card p {
+    padding: 0 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.program-card ul,
+.age-group-card ul {
+    padding: 0 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.program-card ul li,
+.age-group-card ul li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.program-card .btn-primary,
+.age-group-card .btn-primary {
+    margin: 0 1.5rem 1.5rem;
+    display: inline-block;
+}
+
+/* ============================================
+   Teacher Cards
+   ============================================ */
+.teachers-section,
+.facilities-section,
+.curriculum-features {
+    margin: 3rem 0;
+}
+
+.teacher-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.teacher-card {
+    text-align: center;
+    padding: 0;
+    overflow: hidden;
+}
+
+.teacher-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.teacher-card h3 {
+    padding: 1rem 1.5rem 0.5rem;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.teacher-title {
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding: 0 1.5rem;
+}
+
+.teacher-card p {
+    padding: 0 1.5rem 1.5rem;
+    margin: 0;
+}
+
+/* ============================================
+   Full Width Articles
+   ============================================ */
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.full-width img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+/* ============================================
+   Contact Form
+   ============================================ */
+.contact-content {
+    margin: 2rem 0;
+}
+
+.contact-info img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.contact-details {
+    padding: 1rem 0;
+}
+
+.contact-details p {
+    margin-bottom: 1.5rem;
+}
+
+.contact-details a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-details a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+.contact-form-section {
+    background-color: var(--neutral-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+}
+
+.contact-form {
+    margin-top: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--neutral-color);
+    border-radius: 8px;
+    font-family: 'Open Sans', 'Lato', sans-serif;
+    font-size: 1rem;
+    transition: var(--transition);
+    background-color: var(--background-color);
+    min-height: 44px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ============================================
+   Map Section
+   ============================================ */
+.map-section {
+    margin: 3rem 0;
+}
+
+.map-placeholder {
+    text-align: center;
+}
+
+.map-placeholder img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.map-placeholder p {
+    color: var(--text-color);
+    font-style: italic;
+}
+
+/* ============================================
+   Responsive Updates for New Content
+   ============================================ */
 @media (min-width: 768px) {
+    .hero {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .hero-image {
+        flex: 1;
+        max-height: 400px;
+        margin-bottom: 0;
+    }
+
+    .hero-content {
+        flex: 1;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .program-listing {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .teacher-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-content .content {
+        grid-template-columns: 1fr 1.5fr;
     }
 }
 
 @media (min-width: 1024px) {
-    .program-listing {
+    .hero-image {
+        max-height: 500px;
+    }
+
+    .features-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .program-listing {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .teacher-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .full-width img {
+        height: 400px;
+    }
+
+    .contact-info img {
+        height: 350px;
+    }
+
+    .map-placeholder img {
+        height: 400px;
     }
 }
 
