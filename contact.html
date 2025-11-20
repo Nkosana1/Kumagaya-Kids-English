@@ -9,6 +9,7 @@
 </head>
 <body>
     <script src="script.js"></script>
+    <script src="contact-form.js"></script>
     <header>
         <div class="header-wrapper">
             <div class="logo-container">
@@ -62,30 +63,36 @@
                 <article class="contact-form-section">
                     <h3>Schedule a Trial Lesson</h3>
                     <p>Fill out the form below and we'll get back to you within 24 hours to schedule your child's free trial lesson!</p>
-                    <form class="contact-form" action="#" method="post">
+                    <form class="contact-form" id="inquiryForm" novalidate>
+                        <div id="form-message" class="form-message"></div>
                         <div class="form-group">
                             <label for="parent-name">Parent/Guardian Name *</label>
-                            <input type="text" id="parent-name" name="parent-name" required minlength="2">
+                            <input type="text" id="parent-name" name="parentName" required minlength="2">
+                            <span class="error-message" id="parent-name-error"></span>
                         </div>
                         <div class="form-group">
                             <label for="child-name">Child's Name *</label>
-                            <input type="text" id="child-name" name="child-name" required minlength="2">
+                            <input type="text" id="child-name" name="childName" required minlength="2">
+                            <span class="error-message" id="child-name-error"></span>
                         </div>
                         <div class="form-group">
                             <label for="child-age">Child's Age *</label>
-                            <input type="number" id="child-age" name="child-age" required min="2" max="12">
+                            <input type="number" id="child-age" name="childAge" required min="2" max="12">
+                            <span class="error-message" id="child-age-error"></span>
                         </div>
                         <div class="form-group">
                             <label for="email">Email Address *</label>
                             <input type="email" id="email" name="email" required>
+                            <span class="error-message" id="email-error"></span>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number *</label>
                             <input type="tel" id="phone" name="phone" required>
+                            <span class="error-message" id="phone-error"></span>
                         </div>
                         <div class="form-group">
-                            <label for="interest">Program of Interest</label>
-                            <select id="interest" name="interest">
+                            <label for="interest">Preferred Program</label>
+                            <select id="interest" name="preferredProgram">
                                 <option value="">Select a program...</option>
                                 <option value="toddlers">Toddlers (Ages 2-3)</option>
                                 <option value="preschool">Preschool (Ages 4-5)</option>
@@ -98,7 +105,7 @@
                             <label for="message">Message (Optional)</label>
                             <textarea id="message" name="message" rows="4" placeholder="Tell us about your child or ask any questions..."></textarea>
                         </div>
-                        <button type="submit" class="btn-primary">Send Inquiry</button>
+                        <button type="submit" class="btn-primary" id="submit-btn">Send Inquiry</button>
                     </form>
                 </article>
             </div>
