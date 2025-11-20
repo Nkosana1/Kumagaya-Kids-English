@@ -75,8 +75,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Disable submit button
+            // Disable submit button and add loading state
             submitBtn.disabled = true;
+            submitBtn.classList.add('loading');
             submitBtn.textContent = 'Sending...';
             
             // Collect form data
@@ -137,8 +138,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 formMessage.className = 'form-message error';
                 console.error('Error:', error);
             } finally {
-                // Re-enable submit button
+                // Re-enable submit button and remove loading state
                 submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
                 submitBtn.textContent = 'Send Inquiry';
                 
                 // Scroll to message
