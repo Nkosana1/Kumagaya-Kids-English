@@ -83,11 +83,11 @@ p, li {
 }
 
 /* ============================================
-   Header Styles
+   Header Styles - Mobile First
    ============================================ */
 header {
     background-color: var(--background-color);
-    padding: 1.5rem 2rem;
+    padding: 1rem;
     box-shadow: var(--shadow-soft);
     position: sticky;
     top: 0;
@@ -99,8 +99,14 @@ header {
         var(--tertiary-color) 100%) 1;
 }
 
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .logo-container h1 {
-    font-size: 2rem;
+    font-size: 1.25rem;
     margin: 0;
     display: inline-block;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -113,7 +119,7 @@ header {
 .logo-container h1::before {
     content: '📚';
     margin-right: 0.5rem;
-    font-size: 2rem;
+    font-size: 1.25rem;
     display: inline-block;
     animation: bounce 2s infinite;
 }
@@ -128,80 +134,135 @@ header {
 }
 
 /* ============================================
-   Navigation Styles
+   Hamburger Menu - Mobile First
    ============================================ */
-nav {
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+    transition: var(--transition);
+}
+
+.hamburger:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color);
+    border-radius: 3px;
+    transition: var(--transition);
+    transform-origin: center;
+}
+
+.hamburger[aria-expanded="true"] .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ============================================
+   Navigation Styles - Mobile First
+   ============================================ */
+.nav-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.nav-menu.active {
+    max-height: 500px;
     margin-top: 1rem;
 }
 
-nav ul {
+.nav-menu ul {
     list-style: none;
     display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-nav li {
+.nav-menu li {
     margin: 0;
 }
 
-nav a {
+.nav-menu a {
     color: var(--text-color);
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
-    padding: 0.5rem 1rem;
+    padding: 1rem;
     border-radius: 8px;
     transition: var(--transition);
     position: relative;
+    display: block;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    background-color: var(--neutral-color);
 }
 
-nav a:hover {
+.nav-menu a:hover,
+.nav-menu a:focus {
     color: var(--secondary-color);
-    background-color: var(--neutral-color);
-    transform: translateY(-2px);
+    background-color: rgba(78, 205, 196, 0.1);
+    transform: translateX(5px);
 }
 
-nav a.active {
+.nav-menu a.active {
     color: var(--secondary-color);
-    background-color: var(--neutral-color);
+    background-color: rgba(78, 205, 196, 0.15);
     font-weight: 700;
 }
 
-nav a.active::after {
+.nav-menu a.active::before {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
     border-radius: 2px;
 }
 
 /* ============================================
-   Main Content Styles
+   Main Content Styles - Mobile First
    ============================================ */
 main {
     min-height: calc(100vh - 300px);
-    padding: 2rem;
-    max-width: 1200px;
+    padding: 1rem;
+    width: 100%;
     margin: 0 auto;
 }
 
 .hero {
     text-align: center;
-    padding: 3rem 2rem;
+    padding: 2rem 1rem;
     background: linear-gradient(135deg, var(--neutral-color) 0%, rgba(78, 205, 196, 0.1) 100%);
     border-radius: var(--border-radius);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     box-shadow: var(--shadow-soft);
 }
 
 .hero h2 {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -210,18 +271,18 @@ main {
 }
 
 .hero p {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     color: var(--text-color);
 }
 
 .page-header {
     text-align: center;
-    padding: 2rem 0;
-    margin-bottom: 2rem;
+    padding: 1.5rem 0;
+    margin-bottom: 1.5rem;
 }
 
 .page-header h2 {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -230,13 +291,13 @@ main {
 
 .content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .intro {
-    padding: 2rem;
+    padding: 1.5rem;
     background-color: var(--neutral-color);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-soft);
@@ -244,7 +305,7 @@ main {
 
 article {
     background-color: var(--background-color);
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-soft);
     border-left: 4px solid var(--primary-color);
@@ -252,23 +313,40 @@ article {
 }
 
 article:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     box-shadow: var(--shadow-medium);
     border-left-color: var(--secondary-color);
 }
 
+/* Card styles for teacher profiles and program listings */
+.card {
+    background-color: var(--background-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+    border: 1px solid var(--neutral-color);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
 /* ============================================
-   Button Styles
+   Button Styles - Touch Friendly (Mobile First)
    ============================================ */
 .btn-primary {
     display: inline-block;
     padding: 1rem 2rem;
+    min-height: 44px;
+    min-width: 120px;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: var(--background-color);
     text-decoration: none;
     border-radius: var(--border-radius);
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1rem;
     text-align: center;
     box-shadow: var(--shadow-medium);
     transition: var(--transition);
@@ -276,6 +354,8 @@ article:hover {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .btn-primary::before {
@@ -291,9 +371,12 @@ article:hover {
     transition: width 0.6s, height 0.6s;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus {
     transform: translateY(-3px) scale(1.05);
     box-shadow: var(--shadow-hover);
+    outline: 2px solid var(--tertiary-color);
+    outline-offset: 2px;
 }
 
 .btn-primary:hover::before {
@@ -303,6 +386,15 @@ article:hover {
 
 .btn-primary:active {
     transform: translateY(-1px) scale(1.02);
+}
+
+/* Ensure all interactive elements are touch-friendly */
+a, button {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* ============================================
@@ -372,70 +464,184 @@ footer {
 }
 
 /* ============================================
-   Responsive Design
+   Responsive Design - Tablet Breakpoint (768px)
    ============================================ */
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     header {
-        padding: 1rem;
+        padding: 1.5rem 2rem;
     }
 
     .logo-container h1 {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
     }
 
-    nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
-        align-items: flex-start;
+    .logo-container h1::before {
+        font-size: 1.75rem;
     }
 
-    nav a {
-        display: block;
-        width: 100%;
-        padding: 0.75rem;
+    /* Hide hamburger menu on tablet and up */
+    .hamburger {
+        display: none;
+    }
+
+    /* Show horizontal navigation */
+    .nav-menu {
+        max-height: none;
+        overflow: visible;
+        margin-top: 1rem;
+    }
+
+    .nav-menu ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .nav-menu a {
+        padding: 0.75rem 1.25rem;
+        background-color: transparent;
+        min-width: auto;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a:focus {
+        transform: translateY(-2px);
+        background-color: var(--neutral-color);
+    }
+
+    .nav-menu a.active::before {
+        display: none;
+    }
+
+    .nav-menu a.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        border-radius: 2px;
     }
 
     main {
-        padding: 1rem;
+        padding: 2rem;
     }
 
     .hero {
-        padding: 2rem 1rem;
+        padding: 3rem 2rem;
     }
 
     .hero h2 {
-        font-size: 2rem;
+        font-size: 2.25rem;
     }
 
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.75rem;
-    }
-
-    .content {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo-container h1 {
+    .hero p {
         font-size: 1.25rem;
     }
 
-    .hero h2 {
-        font-size: 1.5rem;
+    .page-header {
+        padding: 2rem 0;
+        margin-bottom: 2rem;
     }
 
     .page-header h2 {
-        font-size: 1.75rem;
+        font-size: 2.25rem;
+    }
+
+    /* 2-column grid for content on tablet */
+    .content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    h1 {
+        font-size: 2.25rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .btn-primary {
+        font-size: 1.1rem;
+        padding: 1.25rem 2.5rem;
+    }
+}
+
+/* ============================================
+   Responsive Design - Desktop Breakpoint (1024px)
+   ============================================ */
+@media (min-width: 1024px) {
+    header {
+        padding: 1.5rem 2rem;
+    }
+
+    .logo-container h1 {
+        font-size: 2rem;
+    }
+
+    .logo-container h1::before {
+        font-size: 2rem;
+    }
+
+    .nav-menu ul {
+        gap: 1.5rem;
+    }
+
+    /* Center content with max-width */
+    main {
+        max-width: 1200px;
+        padding: 2rem;
+    }
+
+    .hero {
+        padding: 4rem 3rem;
+    }
+
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+
+    .page-header h2 {
+        font-size: 2.5rem;
+    }
+
+    /* Multi-column layouts for program listings */
+    .content {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+    }
+
+    /* Card-based designs for teacher profiles */
+    .teacher-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+
+    .program-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    article {
+        padding: 2rem;
+    }
+
+    .card {
+        padding: 2rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2.25rem;
     }
 }
 
@@ -462,17 +668,22 @@ img {
     background-clip: text;
 }
 
-/* Card hover effects */
-.card {
-    background-color: var(--background-color);
-    padding: 1.5rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-soft);
-    transition: var(--transition);
+/* Additional utility classes for multi-column layouts */
+.program-listing {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-medium);
+@media (min-width: 768px) {
+    .program-listing {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .program-listing {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
