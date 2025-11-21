@@ -8,22 +8,23 @@
    ============================================ */
 :root {
     /* Color Palette */
-    --color-primary: #4ECDC4;        /* Playful Teal - main brand color */
-    --color-primary-dark: #3BA89F;   /* Darker teal for hover states */
-    --color-primary-light: #6EDDD6;  /* Lighter teal for backgrounds */
-    --color-secondary: #FF6B6B;      /* Friendly Coral - accent color */
-    --color-secondary-dark: #E55555;  /* Darker coral for hover */
-    --color-secondary-light: #FF8E8E; /* Lighter coral */
-    --color-tertiary: #FFD166;       /* Sunny Yellow - highlight color */
-    --color-tertiary-dark: #FFC043;  /* Darker yellow */
-    --color-neutral: #F7F9FC;        /* Clean Light Gray */
-    --color-neutral-dark: #E8ECF1;   /* Darker neutral */
-    --color-text: #2D3748;           /* Dark Blue-Gray for readability */
-    --color-text-light: #4A5568;     /* Lighter text for secondary content */
-    --color-text-muted: #718096;     /* Muted text */
-    --color-background: #FFFFFF;     /* Pure White */
-    --color-footer-bg: #2D3748;      /* Dark Blue for footer */
-    --color-footer-text: #F7F9FC;    /* Light text for footer */
+    --color-primary: #FF6B81;        /* Bubblegum Pink - main brand color */
+    --color-primary-dark: #E5566C;   /* Darker pink for hover states */
+    --color-primary-light: #FF9FB3;  /* Lighter pink for accents */
+    --color-secondary: #FFB347;      /* Sunny Orange - accent color */
+    --color-secondary-dark: #F39324; /* Darker orange for hover */
+    --color-secondary-light: #FFD28A;/* Lighter orange */
+    --color-tertiary: #6EE7B7;       /* Mint Green - highlight color */
+    --color-tertiary-dark: #34D399;  /* Darker mint */
+    --color-tertiary-light: #A7F3D0; /* Lighter mint */
+    --color-neutral: #FFF5E6;        /* Soft Peach background */
+    --color-neutral-dark: #FFE3C4;   /* Deeper peach */
+    --color-text: #1F2933;           /* Charcoal for readability */
+    --color-text-light: #3F4C59;     /* Lighter charcoal */
+    --color-text-muted: #5F6B7A;     /* Muted slate */
+    --color-background: #FFFCF7;     /* Warm White */
+    --color-footer-bg: #1F2933;      /* Deep charcoal for footer */
+    --color-footer-text: #FFEBD4;    /* Warm cream for footer text */
     --color-success: #48BB78;         /* Success green */
     --color-error: #F56565;           /* Error red */
     --color-warning: #ED8936;         /* Warning orange */
@@ -45,7 +46,7 @@
     --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-medium: 0 6px 12px rgba(0, 0, 0, 0.15);
     --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.2);
-    --shadow-focus: 0 0 0 3px rgba(78, 205, 196, 0.3);
+    --shadow-focus: 0 0 0 3px rgba(255, 107, 129, 0.3);
     --shadow-focus-error: 0 0 0 3px rgba(245, 101, 101, 0.3);
     
     /* Border Radius */
@@ -96,9 +97,12 @@ html {
 body {
     font-family: 'Open Sans', 'Lato', sans-serif;
     color: var(--color-text);
-    background-color: var(--color-background);
+    background: radial-gradient(circle at top, rgba(255, 179, 71, 0.15), transparent 45%),
+        radial-gradient(circle at bottom, rgba(110, 231, 183, 0.2), transparent 40%),
+        var(--color-background);
     line-height: 1.6;
     font-size: 16px;
+    min-height: 100vh;
 }
 
 /* ============================================
@@ -370,7 +374,7 @@ header {
     cursor: pointer;
     padding: 0.5rem;
     z-index: 1001;
-    transition: var(--transition);
+    transition: var(--transition-base);
 }
 
 .hamburger:focus-visible {
@@ -472,23 +476,51 @@ header {
    ============================================ */
 main {
     min-height: calc(100vh - 300px);
-    padding: 1rem;
+    padding: var(--spacing-xl) var(--spacing-md);
     width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .hero {
     text-align: center;
     padding: 2rem 1rem;
-    background: linear-gradient(135deg, var(--neutral-color) 0%, rgba(78, 205, 196, 0.1) 100%);
-    border-radius: var(--border-radius);
+    background: linear-gradient(135deg, rgba(255, 107, 129, 0.15) 0%, rgba(255, 179, 71, 0.25) 100%);
+    border-radius: var(--radius-lg);
     margin-bottom: 2rem;
     box-shadow: var(--shadow-soft);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before,
+.hero::after {
+    content: '';
+    position: absolute;
+    border-radius: var(--radius-full);
+    opacity: 0.35;
+    filter: blur(0);
+}
+
+.hero::before {
+    width: 180px;
+    height: 180px;
+    background: var(--color-tertiary-light);
+    top: -60px;
+    right: -40px;
+}
+
+.hero::after {
+    width: 220px;
+    height: 220px;
+    background: rgba(255, 107, 129, 0.25);
+    bottom: -80px;
+    left: -60px;
 }
 
 .hero h2 {
     font-size: 1.75rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -497,7 +529,7 @@ main {
 
 .hero p {
     font-size: 1.1rem;
-    color: var(--text-color);
+    color: var(--color-text);
 }
 
 .page-header {
@@ -508,7 +540,7 @@ main {
 
 .page-header h2 {
     font-size: 1.75rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -523,34 +555,34 @@ main {
 
 .intro {
     padding: 1.5rem;
-    background-color: var(--neutral-color);
-    border-radius: var(--border-radius);
+    background: linear-gradient(180deg, #fff7ec 0%, #fffefb 100%);
+    border-radius: var(--radius-lg);
     box-shadow: var(--shadow-soft);
 }
 
 article {
-    background-color: var(--background-color);
+    background-color: var(--color-background);
     padding: 1.5rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-lg);
     box-shadow: var(--shadow-soft);
-    border-left: 4px solid var(--primary-color);
-    transition: var(--transition);
+    border-left: 4px solid var(--color-primary);
+    transition: var(--transition-base);
 }
 
 article:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-medium);
-    border-left-color: var(--secondary-color);
+    border-left-color: var(--color-secondary);
 }
 
 /* Card styles for teacher profiles and program listings */
 .card {
-    background-color: var(--background-color);
+    background-color: var(--color-background);
     padding: 1.5rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-lg);
     box-shadow: var(--shadow-soft);
-    transition: var(--transition);
-    border: 1px solid var(--neutral-color);
+    transition: var(--transition-base);
+    border: 1px solid var(--color-neutral);
 }
 
 .card:hover {
@@ -683,7 +715,7 @@ footer {
     text-align: center;
     padding-top: 2rem;
     border-top: 1px solid rgba(247, 249, 252, 0.2);
-    color: var(--neutral-color);
+    color: var(--color-neutral);
 }
 
 .footer-bottom p {
@@ -735,7 +767,7 @@ footer {
     .nav-menu a:hover,
     .nav-menu a:focus {
         transform: translateY(-2px);
-        background-color: var(--neutral-color);
+        background-color: var(--color-neutral);
     }
 
     .nav-menu a.active::before {
@@ -750,7 +782,7 @@ footer {
         transform: translateX(-50%);
         width: 80%;
         height: 3px;
-        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
         border-radius: 2px;
     }
 
@@ -878,8 +910,12 @@ footer {
    ============================================ */
 /* Soft rounded corners for images and containers */
 img {
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-soft);
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    background-color: #fffdf7;
 }
 
 /* Playful icon animations */
@@ -890,7 +926,7 @@ img {
 
 /* Gradient text effects */
 .gradient-text {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -912,8 +948,10 @@ img {
     width: 100%;
     max-height: 400px;
     overflow: hidden;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-lg);
     margin-bottom: 1.5rem;
+    border: 4px solid rgba(255, 107, 129, 0.12);
+    box-shadow: var(--shadow-soft);
 }
 
 .hero-image img {
@@ -942,7 +980,7 @@ img {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 2rem;
-    color: var(--text-color);
+    color: var(--color-text);
 }
 
 .features-grid {
@@ -953,11 +991,18 @@ img {
 }
 
 .feature-card {
-    background-color: var(--background-color);
-    border-radius: var(--border-radius);
+    position: relative;
+    background: linear-gradient(180deg, #fffdf7 0%, #ffe5cf 100%);
+    border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-soft);
-    transition: var(--transition);
+    transition: var(--transition-base);
+    border: 2px solid rgba(255, 107, 129, 0.12);
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-medium);
 }
 
 .feature-card img {
@@ -969,12 +1014,25 @@ img {
 
 .feature-card h3 {
     padding: 1rem 1.5rem 0.5rem;
-    color: var(--primary-color);
+    color: var(--color-primary);
+    font-size: 1.3rem;
 }
 
 .feature-card p {
     padding: 0 1.5rem 1.5rem;
     margin: 0;
+    color: var(--color-text-light);
+}
+
+.feature-card::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+    width: 120px;
+    height: 120px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 179, 71, 0.2);
 }
 
 /* ============================================
@@ -989,11 +1047,12 @@ img {
 
 .program-card,
 .age-group-card {
-    background-color: var(--background-color);
-    border-radius: var(--border-radius);
+    background: linear-gradient(180deg, #fffdf7 0%, #fff3e6 100%);
+    border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-soft);
-    transition: var(--transition);
+    transition: var(--transition-base);
+    border: 2px solid rgba(255, 107, 129, 0.1);
 }
 
 .program-card:hover,
@@ -1013,7 +1072,7 @@ img {
 .program-card h3,
 .age-group-card h3 {
     padding: 1.5rem 1.5rem 0.5rem;
-    color: var(--primary-color);
+    color: var(--color-primary);
 }
 
 .program-card p,
@@ -1071,12 +1130,12 @@ img {
 
 .teacher-card h3 {
     padding: 1rem 1.5rem 0.5rem;
-    color: var(--primary-color);
+    color: var(--color-primary);
     margin: 0;
 }
 
 .teacher-title {
-    color: var(--secondary-color);
+    color: var(--color-secondary);
     font-weight: 600;
     margin-bottom: 1rem;
     padding: 0 1.5rem;
@@ -1098,7 +1157,7 @@ img {
     width: 100%;
     height: 300px;
     object-fit: cover;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md);
     margin-bottom: 1.5rem;
     display: block;
 }
@@ -1114,7 +1173,7 @@ img {
     width: 100%;
     height: 250px;
     object-fit: cover;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md);
     margin-bottom: 1.5rem;
     display: block;
 }
@@ -1128,20 +1187,20 @@ img {
 }
 
 .contact-details a {
-    color: var(--primary-color);
+    color: var(--color-primary);
     text-decoration: none;
-    transition: var(--transition);
+    transition: var(--transition-base);
 }
 
 .contact-details a:hover {
-    color: var(--secondary-color);
+    color: var(--color-secondary);
     text-decoration: underline;
 }
 
 .contact-form-section {
-    background-color: var(--neutral-color);
+    background-color: var(--color-neutral);
     padding: 2rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-soft);
 }
 
@@ -1157,7 +1216,7 @@ img {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
-    color: var(--text-color);
+    color: var(--color-text);
 }
 
 .form-group input,
@@ -1190,7 +1249,7 @@ img {
 /* Form Messages */
 .form-message {
     padding: 1rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md);
     margin-bottom: 1.5rem;
     font-weight: 600;
     display: none;
@@ -1258,13 +1317,13 @@ img {
     width: 100%;
     height: 300px;
     object-fit: cover;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md);
     margin-bottom: 1rem;
     display: block;
 }
 
 .map-placeholder p {
-    color: var(--text-color);
+    color: var(--color-text);
     font-style: italic;
 }
 
